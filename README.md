@@ -1,7 +1,7 @@
 # Belajar-ISD
 
 # JURNAL-ISD - Modul 6  
-### **Program Penghitung Kembalian Otomatis**  
+### **Hash dan Map**  
 
 ## 📝 Informasi  
 - **NIM** : 607062400098  
