@@ -7,8 +7,7 @@ import java.util.Stack;
 
 public class AdjacencyList {
     int n;
-    Map<String, Integer> namaToIndex = new HashMap<>();
-    Map<Integer, String> indexToNama = new HashMap<>();
+    HashMap<String, Integer> namaToIndex = new HashMap<>();
     LinkedList<Integer>[] adjListArray;
     int idx = 0;
 
@@ -23,7 +22,6 @@ public class AdjacencyList {
     public void tambahKota(String nama) {
         if (!namaToIndex.containsKey(nama)) {
             namaToIndex.put(nama, idx);
-            indexToNama.put(idx, nama);
             idx++;
         }
     }
@@ -33,7 +31,16 @@ public class AdjacencyList {
         int iKe = namaToIndex.get(ke);
 
         adjListArray[iDari].add(iKe);
-        adjListArray[iKe].add(iDari); // tak berarah
+        adjListArray[iKe].add(iDari);
+    }
+
+    public String getNamaFromIndex(int index) {
+        for (Map.Entry<String, Integer> entry : namaToIndex.entrySet()) {
+            if (entry.getValue() == index) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
 
     public void bfs(String mulai) {
@@ -47,7 +54,7 @@ public class AdjacencyList {
         System.out.println("Urutan kunjungan (berdekatan dulu / BFS):");
         while (!queue.isEmpty()) {
             int node = queue.poll();
-            System.out.println(indexToNama.get(node));
+            System.out.println(getNamaFromIndex(node));
 
             for (int neighbor : adjListArray[node]) {
                 if (!visited[neighbor]) {
@@ -71,7 +78,7 @@ public class AdjacencyList {
 
             if (!visited[node]) {
                 visited[node] = true;
-                System.out.println(indexToNama.get(node));
+                System.out.println(getNamaFromIndex(node));
 
                 for (int neighbor : adjListArray[node]) {
                     if (!visited[neighbor]) {
