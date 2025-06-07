@@ -7,7 +7,7 @@ import java.util.Stack;
 
 public class AdjacencyList {
     int n;
-    HashMap<String, Integer> namaToIndex = new HashMap<>();
+    Map<String, Integer> namaToIndex = new HashMap<>();
     LinkedList<Integer>[] adjListArray;
     int idx = 0;
 
