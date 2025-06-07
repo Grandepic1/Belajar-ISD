@@ -34,7 +34,7 @@ public class AdjacencyList {
         adjListArray[iKe].add(iDari);
     }
 
-    public String getNamaFromIndex(int index) {
+    public String getKotaFromIndex(int index) {
         for (Map.Entry<String, Integer> entry : namaToIndex.entrySet()) {
             if (entry.getValue() == index) {
                 return entry.getKey();
@@ -54,7 +54,7 @@ public class AdjacencyList {
         System.out.println("Urutan kunjungan (berdekatan dulu / BFS):");
         while (!queue.isEmpty()) {
             int node = queue.poll();
-            System.out.println(getNamaFromIndex(node));
+            System.out.println(getKotaFromIndex(node));
 
             for (int neighbor : adjListArray[node]) {
                 if (!visited[neighbor]) {
@@ -78,7 +78,7 @@ public class AdjacencyList {
 
             if (!visited[node]) {
                 visited[node] = true;
-                System.out.println(getNamaFromIndex(node));
+                System.out.println(getKotaFromIndex(node));
 
                 for (int neighbor : adjListArray[node]) {
                     if (!visited[neighbor]) {
